@@ -9,7 +9,8 @@ Widget::Widget(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Widget)
 {
-    ui->setupUi(this);
+    qDebug() << "widget()" << endl;
+     ui->setupUi(this);
 
 }
 
@@ -35,7 +36,7 @@ void Widget::on_btnopen_clicked()
     //错误1:   不同文件类型放一个字符串
     QString filename = QFileDialog::getOpenFileName(this,
                                                     "请选择对应视频文件",
-                                                    "D:\\AA-local_repository\\media_sample\\videos",
+                                                    "D:/AA-local_repository/media_sample/videos",
                                                     "视频文件(*.mp4);;"
                                                     "视频文件(*.avi);;");
 
@@ -50,8 +51,8 @@ void Widget::on_btnopen_clicked()
         "--ignore-config", // 忽略全局配置文件
         "--quiet", // 静默模式（减少日志）
         "--no-video-title-show", // 禁用标题显示
-        "--avcodec-hw=any" // 启用硬件加速（可选）
-    };
+        //"--avcodec-hw=any" // 启用硬件加速（可选）
+        };
 
     //打开文件，处理完路径，开始进行使用vlc播放视频
     //1.初始化vlc实例
@@ -61,12 +62,13 @@ void Widget::on_btnopen_clicked()
         QMessageBox::information(this, "警告", "libvlc_new error!!!");
         exit(EXIT_FAILURE);
     }
-
+#if 0
+#endif
     //2.设置媒体路径
     _pmedia = libvlc_media_new_path(_pinstance, filename.toStdString().c_str());
 
     //3.初始化mediaplayer
-    _pmediaPlayer = libvlc_media_player_new(_pinstance);
+    _pmediaPlayer = libvlc_media_player_new_from_media(_pmedia);
     if(!_pmediaPlayer){
         libvlc_release(_pinstance);
         QMessageBox::information(this, "警告",
@@ -83,6 +85,8 @@ void Widget::on_btnopen_clicked()
 
 }
 
+#if 0
+#endif
 void Widget::on_btnpause_clicked()
 {
     qDebug() << "pause clicked" << endl;
@@ -115,3 +119,5 @@ void Widget::on_btnstop_clicked()
         libvlc_media_player_stop(_pmediaPlayer);
     }
 }
+
+

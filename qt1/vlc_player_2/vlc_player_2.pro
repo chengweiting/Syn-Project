@@ -29,3 +29,7 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+INCLUDEPATH += ./vlc-3.0.8/sdk/include
+LIBS += $$PWD/vlc-3.0.8/sdk/lib/libvlc.lib
+LIBS += $$PWD/vlc-3.0.8/sdk/lib/libvlccore.lib
