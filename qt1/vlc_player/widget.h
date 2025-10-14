@@ -3,7 +3,8 @@
 
 #include <vlc/vlc.h>
 #include <QWidget>
-
+#include <QSlider>
+#include <QLabel>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
@@ -16,6 +17,11 @@ class Widget : public QWidget
 public:
     Widget(QWidget *parent = nullptr);
     ~Widget();
+    libvlc_media_player_t * media_player() const { return _pmediaPlayer; }
+    qint64 durationTime() const;            // 总时长 (ms)
+    void   setTimeText(const QString &t);   // 显示 00:00:00/00:00:00
+    void   setTimeSliderValue(int percent); // 0~100
+    void   setVolumeSliderValue(int val);   // 0~100
 
 private slots:
     void on_btnopen_clicked();
@@ -26,11 +32,16 @@ private slots:
 
     void on_btnstop_clicked();
 
+
+
 private:
     Ui::Widget *ui;
     //由于子函数中用到以下对象，因此需要创建为数据成员
     libvlc_instance_t *     _pinstance = nullptr;
     libvlc_media_player_t * _pmediaPlayer = nullptr;
     libvlc_media_t *        _pmedia = nullptr;
+    libvlc_event_manager_t* _peventManager = nullptr;
+    libvlc_time_t           _durationSec = 0;
+
 };
 #endif // WIDGET_H
