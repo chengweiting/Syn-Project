@@ -25,10 +25,18 @@ public:
     void setTimeText(const QString & str);
     void setVolumePos(int value);
 
+    //获取三对象
+    libvlc_instance_t *getInstance(){return _pInstance;}
+    libvlc_media_t * getMedia() {return _pMedia;}
+    libvlc_media_player_t * getMediaPlayer(){return _pMediaPlayer;}
+
 signals:
     void sigTimeSliderPos(int value);
     void sigTimeText(const QString & str);
     void sigVolumeSliderPos(int value);
+private slots:
+
+
 
 private:
     libvlc_instance_t * _pInstance = nullptr;

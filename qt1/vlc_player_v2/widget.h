@@ -7,6 +7,7 @@
 #include <QSlider>
 #include <QLabel>
 
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
 QT_END_NAMESPACE
@@ -24,14 +25,22 @@ public:
     void   setTimeSliderValue(int percent); // 0~100
     void   setVolumeSliderValue(int val);   // 0~100
 
+    //void initUI();    //手动添加部件需要，显示定义父类
+
+
 private slots:
+    //-------------------四个基本功能按键---------------
     void on_btnopen_clicked();
-
     void on_btnpause_clicked();
-
     void on_btnplayer_clicked();
-
     void on_btnstop_clicked();
+
+#if 0
+    //------------时间文本,播放位置，音量设置-------------
+    void setPreQlable(const QString &str);
+    void setPreTimeSlieder(int tm);
+    void setPreVolumeSlider(int vlm);
+#endif
 
 
 
@@ -44,5 +53,6 @@ private:
     libvlc_event_manager_t* _peventManager = nullptr;
     libvlc_time_t           _durationSec = 0;
     VLCkit *                _vlckit = nullptr;
+
 };
 #endif // WIDGET_H

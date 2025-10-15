@@ -18,7 +18,8 @@ static void processPosition(VLCkit * pkits)
     //百分比
     float pos = libvlc_media_player_get_position(pkits->mediaPlayer());
     pkits->setTimeSliderPos(pos * 100);
-    libvlc_time_t totalSecs = pkits->durations() / 1000;    //&&&&改为s为单位
+    libvlc_time_t totalSecs = pkits->durations();
+    //qDebug() << "durations(): " << pkits->durations();
     //qDebug() << "total secs: " << totalSecs;
     libvlc_time_t curSecs = libvlc_media_player_get_time(pkits->mediaPlayer()) / 1000;
     //qDebug() << "cur secs: " << curSecs;
@@ -96,6 +97,8 @@ bool VLCkit::initVLC()
     {
         return false;
     }
+
+    //if(p)
 }
 
 //封装一下解析文件到播放视频的功能
@@ -110,6 +113,7 @@ bool VLCkit::play(const QString &name, void *hwnd)
     //2. 解析文件
     libvlc_media_parse(_pMedia);
     _totalSec = libvlc_media_get_duration(_pMedia) / 1000;
+    qDebug() << "总时长 = " << _totalSec << endl;
     //3. 设置媒体播放器
     libvlc_media_player_set_media(_pMediaPlayer, _pMedia);
     //4. 设置播放窗口句柄

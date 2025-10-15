@@ -50,18 +50,24 @@ OBJECTS_DIR   = release
 
 ####### Files
 
-SOURCES       = ..\vlc_player_v2\main.cpp \
+SOURCES       = ..\vlc_player_v2\ctitlebar.cpp \
+		..\vlc_player_v2\main.cpp \
 		..\vlc_player_v2\vlckit.cpp \
-		..\vlc_player_v2\widget.cpp release\moc_vlckit.cpp \
+		..\vlc_player_v2\widget.cpp release\moc_ctitlebar.cpp \
+		release\moc_vlckit.cpp \
 		release\moc_widget.cpp
-OBJECTS       = release/main.o \
+OBJECTS       = release/ctitlebar.o \
+		release/main.o \
 		release/vlckit.o \
 		release/widget.o \
+		release/moc_ctitlebar.o \
 		release/moc_vlckit.o \
 		release/moc_widget.o
 
-DIST          =  ..\vlc_player_v2\vlckit.h \
-		..\vlc_player_v2\widget.h ..\vlc_player_v2\main.cpp \
+DIST          =  ..\vlc_player_v2\ctitlebar.h \
+		..\vlc_player_v2\vlckit.h \
+		..\vlc_player_v2\widget.h ..\vlc_player_v2\ctitlebar.cpp \
+		..\vlc_player_v2\main.cpp \
 		..\vlc_player_v2\vlckit.cpp \
 		..\vlc_player_v2\widget.cpp
 QMAKE_TARGET  = vlc_player
@@ -83,10 +89,10 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) vlc_player.zip $(SOURCES) $(DIST) ..\vlc_player_v2\vlc_player.pro ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\spec_pre.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\qdevice.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\device_config.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\common\sanitize.conf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\common\gcc-base.conf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\common\g++-base.conf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\common\angle.conf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\win32\windows_vulkan_sdk.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\common\windows-vulkan.conf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\common\g++-win32.conf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\common\windows-desktop.conf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\qconfig.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3danimation.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3danimation_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dcore.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dcore_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dextras.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dextras_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dinput.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dinput_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dlogic.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dlogic_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquick.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquick_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquickanimation.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquickanimation_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquickextras.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquickextras_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquickinput.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquickinput_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquickrender.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquickrender_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquickscene2d.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquickscene2d_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3drender.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3drender_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_accessibility_support_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_axbase.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_axbase_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_axcontainer.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_axcontainer_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_axserver.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_axserver_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_bluetooth.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_bluetooth_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_bootstrap_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_charts.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_charts_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_concurrent.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_concurrent_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_core.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_core_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_datavisualization.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_datavisualization_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_dbus.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_dbus_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_designer.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_designer_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_designercomponents_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_devicediscovery_support_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_edid_support_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_egl_support_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_fb_support_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_fontdatabase_support_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_gamepad.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_gamepad_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_gui.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_gui_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_help.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_help_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_location.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_location_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_multimedia.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_multimedia_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_multimediawidgets.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_network.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_network_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_networkauth.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_networkauth_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_nfc.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_nfc_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_opengl.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_opengl_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_openglextensions.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_openglextensions_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_packetprotocol_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_platformcompositor_support_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_positioning.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_positioning_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_positioningquick.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_positioningquick_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_printsupport.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_printsupport_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_qml.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_qml_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_qmldebug_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_qmldevtools_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_qmlmodels.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_qmlmodels_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_qmltest.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_qmltest_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_qmlworkerscript.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_qmlworkerscript_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quick.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quick_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quickcontrols2.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quickcontrols2_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quickparticles_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quickshapes_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quicktemplates2.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quicktemplates2_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quickwidgets.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quickwidgets_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_remoteobjects.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_remoteobjects_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_repparser.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_repparser_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_scxml.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_scxml_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_sensors.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_sensors_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_serialbus.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_serialbus_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_serialport.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_serialport_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_sql.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_sql_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_svg.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_svg_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_testlib.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_testlib_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_texttospeech.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_texttospeech_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_theme_support_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_uiplugin.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_uitools.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_uitools_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_virtualkeyboard.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_virtualkeyboard_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_webchannel.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_webchannel_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_websockets.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_websockets_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_widgets.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_widgets_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_winextras.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_winextras_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_xml.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_xml_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_xmlpatterns.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_zlib_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\qt_functions.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\qt_config.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\win32-g++\qmake.conf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\spec_post.prf .qmake.stash ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\exclusive_builds.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\toolchain.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\default_pre.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\win32\default_pre.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\resolve_config.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\exclusive_builds_post.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\default_post.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\build_pass.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\qml_debug.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\precompile_header.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\warn_on.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\qt.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\resources_functions.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\resources.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\moc.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\win32\opengl.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\uic.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\qmake_use.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\file_copies.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\win32\windows.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\testcase_targets.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\exceptions.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\yacc.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\lex.prf ..\vlc_player_v2\vlc_player.pro ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\lib\Qt5Widgets.prl ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\lib\Qt5Gui.prl ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\lib\Qt5Core.prl ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\lib\qtmain.prl    ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\data\dummy.cpp ..\vlc_player_v2\vlckit.h ..\vlc_player_v2\widget.h  ..\vlc_player_v2\main.cpp ..\vlc_player_v2\vlckit.cpp ..\vlc_player_v2\widget.cpp ..\vlc_player_v2\widget.ui    
+	$(ZIP) vlc_player.zip $(SOURCES) $(DIST) ..\vlc_player_v2\vlc_player.pro ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\spec_pre.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\qdevice.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\device_config.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\common\sanitize.conf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\common\gcc-base.conf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\common\g++-base.conf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\common\angle.conf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\win32\windows_vulkan_sdk.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\common\windows-vulkan.conf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\common\g++-win32.conf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\common\windows-desktop.conf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\qconfig.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3danimation.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3danimation_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dcore.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dcore_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dextras.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dextras_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dinput.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dinput_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dlogic.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dlogic_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquick.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquick_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquickanimation.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquickanimation_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquickextras.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquickextras_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquickinput.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquickinput_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquickrender.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquickrender_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquickscene2d.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquickscene2d_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3drender.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3drender_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_accessibility_support_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_axbase.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_axbase_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_axcontainer.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_axcontainer_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_axserver.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_axserver_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_bluetooth.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_bluetooth_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_bootstrap_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_charts.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_charts_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_concurrent.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_concurrent_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_core.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_core_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_datavisualization.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_datavisualization_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_dbus.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_dbus_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_designer.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_designer_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_designercomponents_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_devicediscovery_support_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_edid_support_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_egl_support_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_fb_support_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_fontdatabase_support_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_gamepad.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_gamepad_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_gui.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_gui_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_help.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_help_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_location.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_location_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_multimedia.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_multimedia_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_multimediawidgets.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_network.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_network_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_networkauth.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_networkauth_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_nfc.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_nfc_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_opengl.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_opengl_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_openglextensions.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_openglextensions_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_packetprotocol_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_platformcompositor_support_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_positioning.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_positioning_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_positioningquick.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_positioningquick_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_printsupport.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_printsupport_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_qml.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_qml_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_qmldebug_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_qmldevtools_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_qmlmodels.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_qmlmodels_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_qmltest.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_qmltest_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_qmlworkerscript.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_qmlworkerscript_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quick.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quick_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quickcontrols2.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quickcontrols2_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quickparticles_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quickshapes_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quicktemplates2.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quicktemplates2_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quickwidgets.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quickwidgets_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_remoteobjects.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_remoteobjects_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_repparser.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_repparser_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_scxml.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_scxml_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_sensors.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_sensors_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_serialbus.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_serialbus_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_serialport.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_serialport_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_sql.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_sql_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_svg.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_svg_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_testlib.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_testlib_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_texttospeech.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_texttospeech_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_theme_support_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_uiplugin.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_uitools.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_uitools_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_virtualkeyboard.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_virtualkeyboard_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_webchannel.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_webchannel_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_websockets.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_websockets_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_widgets.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_widgets_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_winextras.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_winextras_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_xml.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_xml_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_xmlpatterns.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\modules\qt_lib_zlib_private.pri ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\qt_functions.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\qt_config.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\win32-g++\qmake.conf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\spec_post.prf .qmake.stash ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\exclusive_builds.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\toolchain.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\default_pre.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\win32\default_pre.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\resolve_config.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\exclusive_builds_post.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\default_post.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\build_pass.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\qml_debug.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\precompile_header.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\warn_on.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\qt.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\resources_functions.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\resources.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\moc.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\win32\opengl.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\uic.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\qmake_use.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\file_copies.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\win32\windows.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\testcase_targets.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\exceptions.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\yacc.prf ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\lex.prf ..\vlc_player_v2\vlc_player.pro ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\lib\Qt5Widgets.prl ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\lib\Qt5Gui.prl ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\lib\Qt5Core.prl ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\lib\qtmain.prl    ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\data\dummy.cpp ..\vlc_player_v2\ctitlebar.h ..\vlc_player_v2\vlckit.h ..\vlc_player_v2\widget.h  ..\vlc_player_v2\ctitlebar.cpp ..\vlc_player_v2\main.cpp ..\vlc_player_v2\vlckit.cpp ..\vlc_player_v2\widget.cpp ..\vlc_player_v2\widget.ui    
 
 clean: compiler_clean 
-	-$(DEL_FILE) release\main.o release\vlckit.o release\widget.o release\moc_vlckit.o release\moc_widget.o
+	-$(DEL_FILE) release\ctitlebar.o release\main.o release\vlckit.o release\widget.o release\moc_ctitlebar.o release\moc_vlckit.o release\moc_widget.o
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash
@@ -111,9 +117,118 @@ compiler_moc_predefs_clean:
 release/moc_predefs.h: ../../../../Apps/aa_qt514/5.14.2/mingw73_32/mkspecs/features/data/dummy.cpp
 	g++ -fno-keep-inline-dllexport -O2 -std=gnu++11 -Wall -Wextra -Wextra -dM -E -o release\moc_predefs.h ..\..\..\..\Apps\aa_qt514\5.14.2\mingw73_32\mkspecs\features\data\dummy.cpp
 
-compiler_moc_header_make_all: release/moc_vlckit.cpp release/moc_widget.cpp
+compiler_moc_header_make_all: release/moc_ctitlebar.cpp release/moc_vlckit.cpp release/moc_widget.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) release\moc_vlckit.cpp release\moc_widget.cpp
+	-$(DEL_FILE) release\moc_ctitlebar.cpp release\moc_vlckit.cpp release\moc_widget.cpp
+release/moc_ctitlebar.cpp: ../vlc_player_v2/ctitlebar.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtWidgets/QWidget \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtWidgets/qwidget.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtWidgets/qtwidgetsglobal.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qtguiglobal.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qglobal.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qconfig-bootstrapped.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qconfig.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qtcore-config.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qsystemdetection.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qprocessordetection.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qcompilerdetection.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qtypeinfo.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qsysinfo.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qlogging.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qflags.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qatomic.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qbasicatomic.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qatomic_bootstrap.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qgenericatomic.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qatomic_cxx11.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qatomic_msvc.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qglobalstatic.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qmutex.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qnumeric.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qversiontagging.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qtgui-config.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtWidgets/qtwidgets-config.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qwindowdefs.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qobjectdefs.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qnamespace.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qobjectdefs_impl.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qwindowdefs_win.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qobject.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qstring.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qchar.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qbytearray.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qrefcount.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qarraydata.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qstringliteral.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qstringalgorithms.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qstringview.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qstringbuilder.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qlist.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qalgorithms.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qiterator.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qhashfunctions.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qpair.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qvector.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qcontainertools_impl.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qpoint.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qbytearraylist.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qstringlist.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qregexp.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qstringmatcher.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qcoreevent.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qscopedpointer.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qmetatype.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qvarlengtharray.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qcontainerfwd.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qobject_impl.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qmargins.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qpaintdevice.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qrect.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qsize.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qpalette.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qcolor.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qrgb.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qrgba64.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qbrush.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qmatrix.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qpolygon.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qregion.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qdatastream.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qiodevice.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qline.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qtransform.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qpainterpath.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qimage.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qpixelformat.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qpixmap.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qsharedpointer.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qshareddata.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qhash.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qsharedpointer_impl.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qfont.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qfontmetrics.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qfontinfo.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtWidgets/qsizepolicy.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qcursor.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qkeysequence.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qevent.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qvariant.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qmap.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qdebug.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qtextstream.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qlocale.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qset.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qcontiguouscache.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qurl.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qurlquery.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qfile.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qfiledevice.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qvector2d.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qtouchdevice.h \
+		release/moc_predefs.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/bin/moc.exe
+	D:\Apps\aa_qt514\5.14.2\mingw73_32\bin\moc.exe $(DEFINES) --include D:/AA-local_repository/Syn-Project/qt1/build-vlc_player-Desktop_Qt_5_14_2_MinGW_32_bit-Debug/release/moc_predefs.h -ID:/Apps/aa_qt514/5.14.2/mingw73_32/mkspecs/win32-g++ -ID:/AA-local_repository/Syn-Project/qt1/vlc_player_v2 -ID:/AA-local_repository/Syn-Project/qt1/vlc_player_v2/vlc-3.0.8/sdk/include -ID:/Apps/aa_qt514/5.14.2/mingw73_32/include -ID:/Apps/aa_qt514/5.14.2/mingw73_32/include/QtWidgets -ID:/Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui -ID:/Apps/aa_qt514/5.14.2/mingw73_32/include/QtANGLE -ID:/Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore -I. -ID:/Apps/aa_qt514/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/Apps/aa_qt514/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/Apps/aa_qt514/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/Apps/aa_qt514/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/Apps/aa_qt514/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/Apps/aa_qt514/Tools/mingw730_32/i686-w64-mingw32/include ..\vlc_player_v2\ctitlebar.h -o release\moc_ctitlebar.cpp
+
 release/moc_vlckit.cpp: ../vlc_player_v2/vlckit.h \
 		../vlc_player_v2/vlc-3.0.8/sdk/include/vlc/vlc.h \
 		../vlc_player_v2/vlc-3.0.8/sdk/include/vlc/libvlc.h \
@@ -337,6 +452,113 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 
 
 ####### Compile
+
+release/ctitlebar.o: ../vlc_player_v2/ctitlebar.cpp ../vlc_player_v2/ctitlebar.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtWidgets/QWidget \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtWidgets/qwidget.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtWidgets/qtwidgetsglobal.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qtguiglobal.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qglobal.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qconfig-bootstrapped.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qconfig.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qtcore-config.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qsystemdetection.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qprocessordetection.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qcompilerdetection.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qtypeinfo.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qsysinfo.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qlogging.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qflags.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qatomic.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qbasicatomic.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qatomic_bootstrap.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qgenericatomic.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qatomic_cxx11.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qatomic_msvc.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qglobalstatic.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qmutex.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qnumeric.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qversiontagging.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qtgui-config.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtWidgets/qtwidgets-config.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qwindowdefs.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qobjectdefs.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qnamespace.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qobjectdefs_impl.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qwindowdefs_win.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qobject.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qstring.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qchar.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qbytearray.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qrefcount.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qarraydata.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qstringliteral.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qstringalgorithms.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qstringview.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qstringbuilder.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qlist.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qalgorithms.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qiterator.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qhashfunctions.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qpair.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qvector.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qcontainertools_impl.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qpoint.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qbytearraylist.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qstringlist.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qregexp.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qstringmatcher.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qcoreevent.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qscopedpointer.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qmetatype.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qvarlengtharray.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qcontainerfwd.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qobject_impl.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qmargins.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qpaintdevice.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qrect.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qsize.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qpalette.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qcolor.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qrgb.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qrgba64.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qbrush.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qmatrix.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qpolygon.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qregion.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qdatastream.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qiodevice.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qline.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qtransform.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qpainterpath.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qimage.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qpixelformat.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qpixmap.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qsharedpointer.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qshareddata.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qhash.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qsharedpointer_impl.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qfont.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qfontmetrics.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qfontinfo.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtWidgets/qsizepolicy.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qcursor.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qkeysequence.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qevent.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qvariant.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qmap.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qdebug.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qtextstream.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qlocale.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qset.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qcontiguouscache.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qurl.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qurlquery.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qfile.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtCore/qfiledevice.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qvector2d.h \
+		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtGui/qtouchdevice.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\ctitlebar.o ..\vlc_player_v2\ctitlebar.cpp
 
 release/main.o: ../vlc_player_v2/main.cpp ../vlc_player_v2/widget.h \
 		../vlc_player_v2/vlckit.h \
@@ -710,6 +932,9 @@ release/widget.o: ../vlc_player_v2/widget.cpp ../vlc_player_v2/widget.h \
 		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtWidgets/QMessageBox \
 		../../../../Apps/aa_qt514/5.14.2/mingw73_32/include/QtWidgets/qmessagebox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\widget.o ..\vlc_player_v2\widget.cpp
+
+release/moc_ctitlebar.o: release/moc_ctitlebar.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\moc_ctitlebar.o release\moc_ctitlebar.cpp
 
 release/moc_vlckit.o: release/moc_vlckit.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\moc_vlckit.o release\moc_vlckit.cpp

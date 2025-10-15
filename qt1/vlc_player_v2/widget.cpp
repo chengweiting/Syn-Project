@@ -12,6 +12,35 @@ Widget::Widget(QWidget *parent)
     qDebug() << "widget()" << endl;
     ui->setupUi(this);
     _vlckit = new VLCkit(); //手动分配堆空间
+
+    //-----------通知mediaplayer通ui控件--------------
+    connect(_vlckit,&VLCkit::sigTimeSliderPos, [=](int v){
+        this->setTimeSliderValue(v);
+    });
+    connect(_vlckit, &VLCkit::sigTimeText, [=](QString str1){
+        this->setTimeText(str1);
+    });
+    connect(_vlckit, &VLCkit::sigVolumeSliderPos, [=](int v){
+        this->setVolumeSliderValue(v);
+    });
+
+    //--------------ui控件通知mediaplayer-------------
+    connect(ui->_timeSlider, &QSlider::sliderMoved, [=](int value){
+        float percent = value / 100.0;
+        libvlc_media_player_set_position(_vlckit->getMediaPlayer(), percent);
+    });
+
+    connect(ui->_volumeSlider, &QSlider::sliderMoved, [=](int value){
+        float percent = value ;
+        if(_vlckit->getMediaPlayer()){
+            libvlc_audio_set_volume(_vlckit->getMediaPlayer(), percent);
+        }
+        //libvlc_audio_set_volume(_vlckit->getMediaPlayer(), percent);
+    });
+
+
+
+
 }
 
 Widget::~Widget()
@@ -26,6 +55,7 @@ Widget::~Widget()
     qDebug () << "~Widget" << endl;
 
 }
+
 
 qint64 Widget::durationTime() const
 {
@@ -53,6 +83,7 @@ void Widget::setVolumeSliderValue(int val)
     ui->_volumeSlider->setValue(val);
 }
 
+#if 0
 static void vlc_callback( const struct libvlc_event_t *p_event, void *p_data )
 {
     qDebug() << "vlc_callback...";
@@ -90,13 +121,14 @@ static void vlc_callback( const struct libvlc_event_t *p_event, void *p_data )
         {
             //获取音量百分比，再传给音量滑动条
             int val = libvlc_audio_get_volume(p->media_player());
+            //qDebug() <<  "line 109 , val = " << val << endl;
             p->setVolumeSliderValue(val);
             break;
         }
         }
     }
 }
-
+#endif
 
 //open按钮的业务是，点击后打开文件对话框，选择和限定对应数据类型后打开文件
 void Widget::on_btnopen_clicked()
@@ -117,8 +149,17 @@ void Widget::on_btnopen_clicked()
     }
 
     filename = QDir::toNativeSeparators(filename);      //将路径中的斜杠换成符合当前操作系统的版本
-    _vlckit->initVLC();
+
+    bool f1 = _vlckit->initVLC();
     _vlckit->play(filename, (void*)ui->widget_2->winId());
+    if(f1){
+        qDebug() << "三个相关对象初始化成功" << endl;
+    }else{
+        qDebug() << "三个相关对象初始化失败" << endl;
+    }
+
+
+
 
 }
 
@@ -143,5 +184,25 @@ void Widget::on_btnstop_clicked()
     qDebug() << "stop clicked" << endl;
     _vlckit->stop();
 }
+
+#if 0
+void Widget::setPreQlable(const QString &str)
+{
+
+}
+
+void Widget::setPreTimeSlieder(int tm)
+{
+
+}
+
+void Widget::setPreVolumeSlider(int vlm)
+{
+    //获取音量百分比，再传给音量滑动条
+    //int val = libvlc_audio_get_volume(p->media_player());
+    this->setVolumeSliderValue(vlm);
+
+}
+#endif
 
 

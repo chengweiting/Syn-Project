@@ -24,6 +24,7 @@ public:
     void   setVolumeSliderValue(int val);   // 0~100
 
 private slots:
+    //-------------------四个基本功能按键---------------
     void on_btnopen_clicked();
 
     void on_btnpause_clicked();
@@ -31,6 +32,11 @@ private slots:
     void on_btnplayer_clicked();
 
     void on_btnstop_clicked();
+
+    //------------时间文本,播放位置，音量设置-------------
+    void setPreQlable(const QString &str);
+    void setPreTimeSlieder(int tm);
+    void setPreVolumeSlider(int vlm);
 
 
 
