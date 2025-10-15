@@ -3,6 +3,7 @@
 
 #include <vlc/vlc.h>
 #include <QObject>
+#include <QMouseEvent>
 
 class VLCkit : public QObject
 {
@@ -18,6 +19,9 @@ public:
     void stop();
     void setVolume(int value);
     void setPosition(int value);
+    void addMediaIndex();
+
+    int currentIndex() const {  return _currentIndex;   }
     libvlc_media_player_t * mediaPlayer() const { return _pMediaPlayer; }
     libvlc_time_t durations() const { return _totalSec; }
     //当需要修改UI界面的显示时，通过信号来触发，以下三个函数调用时就触发信号
@@ -29,6 +33,7 @@ public:
     libvlc_instance_t *getInstance(){return _pInstance;}
     libvlc_media_t * getMedia() {return _pMedia;}
     libvlc_media_player_t * getMediaPlayer(){return _pMediaPlayer;}
+
 
 signals:
     void sigTimeSliderPos(int value);
@@ -44,6 +49,11 @@ private:
     libvlc_media_player_t * _pMediaPlayer = nullptr;
     libvlc_event_manager_t * _pEventManager = nullptr;
     libvlc_time_t _totalSec = 0;//一个文件的总时间
+
+    //播放列表数据成员
+    libvlc_media_list_player_t *    _pMediaListPlayer = nullptr;
+    libvlc_media_list_t *           _pMediaList = nullptr;
+    int                             _currentIndex = -1;     //当前播放视频的下标
 
 };
 

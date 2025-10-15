@@ -13,6 +13,8 @@ VLCkit::~VLCkit()
     libvlc_release(_pInstance);
 }
 
+
+//三个回调函数实现
 static void processPosition(VLCkit * pkits)
 {
     //百分比
@@ -47,6 +49,12 @@ static void processVolume(VLCkit * pkits)
     pkits->setVolumePos(val);
 }
 
+static void processMediaChanged(VLCkit* pkits)
+{
+    qDebug() << ">>>>> processMediaChanged()";
+    pkits->addMediaIndex();
+}
+
 static void vlc_callback( const struct libvlc_event_t *p_event, void *p_data
                           )
 {
@@ -57,6 +65,8 @@ static void vlc_callback( const struct libvlc_event_t *p_event, void *p_data
             processPosition(pkits); break;
         case libvlc_MediaPlayerAudioVolume://音量变化时
             processVolume(pkits); break;
+        case libvlc_MediaPlayerMediaChanged:
+             processMediaChanged(pkits); break;
         }
     }
 }
@@ -184,4 +194,11 @@ void VLCkit::setVolume(int value)
 void VLCkit::setPosition(int value)
 {
     libvlc_media_player_set_position(_pMediaPlayer, value / 100.0);
+}
+
+
+//-----------播放列表添加视频----------
+void VLCkit::addMediaIndex()
+{
+
 }

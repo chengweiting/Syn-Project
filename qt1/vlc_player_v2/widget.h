@@ -27,6 +27,10 @@ public:
 
     //void initUI();    //手动添加部件需要，显示定义父类
 
+    //全屏播放
+    void mouseDoubleClickEvent(QMouseEvent *event);
+    void keyPressEvent(QKeyEvent *event);
+
 
 private slots:
     //-------------------四个基本功能按键---------------

@@ -1,6 +1,7 @@
 #include "widget.h"
 #include "ui_widget.h"
 #include "vlckit.h"
+#include <windows.h>
 #include <QDebug>
 #include <QFileDialog>
 #include <QMessageBox>
@@ -55,6 +56,35 @@ Widget::~Widget()
     qDebug () << "~Widget" << endl;
 
 }
+
+//-----------------------windows 编程-------------------------
+WINBOOL WINAPI EnableWindow(HWND hWnd,WINBOOL bEnable);
+
+BOOL CALLBACK EnumVLC(HWND hwnd, LPARAM lParam)
+{
+    TCHAR szTitle[1024];
+
+    int nLen = GetWindowText(hwnd, szTitle, 1024);
+
+    if (nLen > 0)
+    {
+        EnableWindow(hwnd, FALSE);
+        KillTimer(NULL, 1);
+    }
+
+    return TRUE;
+}
+
+void CALLBACK TimeProc(HWND hwnd, UINT msg, UINT_PTR id, DWORD time)
+{
+    HWND vlcHwnd = FindWindowEx(NULL, NULL, NULL, L"王道播放器");
+
+    if (vlcHwnd)
+    {
+        EnumChildWindows(vlcHwnd, EnumVLC, NULL);
+    }
+}
+
 
 
 qint64 Widget::durationTime() const
@@ -158,7 +188,9 @@ void Widget::on_btnopen_clicked()
         qDebug() << "三个相关对象初始化失败" << endl;
     }
 
-
+    //Windows头文件中的定时器函数
+    int nret = SetTimer(NULL, 1, 300, TimeProc);
+    //EnableWindow();//启用和禁用窗口接收事件
 
 
 }
@@ -184,6 +216,30 @@ void Widget::on_btnstop_clicked()
     qDebug() << "stop clicked" << endl;
     _vlckit->stop();
 }
+
+//-------------------全屏播放--------------------
+
+void Widget::mouseDoubleClickEvent(QMouseEvent *event)
+{
+    //双击窗口全屏或退出全屏
+    if(this->isFullScreen()){
+        this->showNormal();
+    }else{
+        this->showFullScreen();
+    }
+}
+
+void Widget::keyPressEvent(QKeyEvent *event)
+{
+    //通过Esc按键退出全屏
+    if(event->key() == Qt::Key_Escape){
+        this->showNormal();
+    }
+}
+
+
+
+
 
 #if 0
 void Widget::setPreQlable(const QString &str)
