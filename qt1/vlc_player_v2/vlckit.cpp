@@ -1,5 +1,7 @@
 #include "vlckit.h"
 #include <QDebug>
+#include <QDir>
+
 
 VLCkit::VLCkit(QObject *parent) : QObject(parent)
 {
@@ -90,6 +92,11 @@ bool VLCkit::initVLC()
                 libvlc_event_attach(_pEventManager,
                                     libvlc_MediaPlayerAudioVolume,
                                     vlc_callback, this);
+                //3.媒体改变时
+                libvlc_event_attach(_pEventManager,
+                                    libvlc_MediaPlayerMediaChanged,
+                                    vlc_callback, this);
+
                 return true;
             }
             else {
@@ -114,6 +121,7 @@ bool VLCkit::initVLC()
 //封装一下解析文件到播放视频的功能
 bool VLCkit::play(const QString &name, void *hwnd)
 {
+
     //1. 设置媒体
     _pMedia = libvlc_media_new_path(_pInstance, name.toStdString().c_str());
     if(!_pMedia) {
@@ -134,6 +142,7 @@ bool VLCkit::play(const QString &name, void *hwnd)
         return false;
     } else
         return true;
+
 }
 
 //封装的三个按钮的功能模块，通过_pMediaPlayer获取的状态判断
@@ -198,7 +207,53 @@ void VLCkit::setPosition(int value)
 
 
 //-----------播放列表添加视频----------
+
+//播放列表运行
+bool VLCkit::play(const QStringList &names, void *hwnd)
+{
+    //设置列表播放器
+    _pMediaListPlayer = libvlc_media_list_player_new(_pInstance);
+    if(!_pMediaListPlayer) {
+        return false;
+    }
+    _pMediaList = libvlc_media_list_new(_pInstance);
+    if(!_pMediaList) {
+        return false;
+    }
+
+    for(int i = 0; i < names.size(); i++ ){
+        QString filename = names[i];
+        filename = QDir::toNativeSeparators(filename);
+        _pMedia = libvlc_media_new_path(_pInstance, filename.toStdString().c_str());
+        if(!_pMedia){
+            return false;
+        }
+
+        //将媒体对象加入播放列表中
+        libvlc_media_list_add_media(_pMediaList, _pMedia);
+        //解析媒体元数据，视频时长等
+        libvlc_media_parse(_pMedia);
+        libvlc_time_t durationSecs =
+                libvlc_media_get_duration(_pMedia) / 1000;
+        _durationArr.push_back(durationSecs);
+        libvlc_media_release(_pMedia);
+    }
+
+    //播放列表关联媒体列表
+    libvlc_media_list_player_set_media_list(_pMediaListPlayer, _pMediaList);
+    //设置循环播放模式
+    libvlc_media_list_player_set_playback_mode(_pMediaListPlayer, libvlc_playback_mode_loop);
+
+    //播放器列表的播放器与媒体的播放器要产生管理
+    libvlc_media_list_player_set_media_player(_pMediaListPlayer, _pMediaPlayer);
+    libvlc_media_player_set_hwnd(_pMediaPlayer, hwnd);      //设置播放的窗口
+    libvlc_media_list_player_play(_pMediaListPlayer);       //开始播放
+    qDebug() << "list play success" << endl;
+    return true;
+}
+
 void VLCkit::addMediaIndex()
 {
-
+    ++_currentIndex;
+    _currentIndex %= _durationArr.size();
 }

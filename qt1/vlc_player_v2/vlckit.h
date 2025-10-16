@@ -4,6 +4,9 @@
 #include <vlc/vlc.h>
 #include <QObject>
 #include <QMouseEvent>
+#include <vector>
+
+using std::vector;
 
 class VLCkit : public QObject
 {
@@ -13,6 +16,7 @@ public:
     ~VLCkit();
 
     bool initVLC();
+    bool play(const QStringList &names, void *hwnd);
     bool play(const QString & name, void * hwnd);
     void play();
     void pause();
@@ -20,6 +24,9 @@ public:
     void setVolume(int value);
     void setPosition(int value);
     void addMediaIndex();
+    const vector<libvlc_time_t> & durationArr() const{
+        return  _durationArr;
+    }
 
     int currentIndex() const {  return _currentIndex;   }
     libvlc_media_player_t * mediaPlayer() const { return _pMediaPlayer; }
@@ -50,10 +57,12 @@ private:
     libvlc_event_manager_t * _pEventManager = nullptr;
     libvlc_time_t _totalSec = 0;//一个文件的总时间
 
+
     //播放列表数据成员
     libvlc_media_list_player_t *    _pMediaListPlayer = nullptr;
     libvlc_media_list_t *           _pMediaList = nullptr;
     int                             _currentIndex = -1;     //当前播放视频的下标
+    vector<libvlc_time_t>           _durationArr;
 
 };
 

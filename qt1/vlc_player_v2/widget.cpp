@@ -165,6 +165,8 @@ void Widget::on_btnopen_clicked()
 {
     //openbtn test
     qDebug() << "点击open按钮" << endl;
+
+#if 0
     //错误1:   不同文件类型放一个字符串
     QString filename
             = QFileDialog::getOpenFileName(this,
@@ -181,12 +183,30 @@ void Widget::on_btnopen_clicked()
     filename = QDir::toNativeSeparators(filename);      //将路径中的斜杠换成符合当前操作系统的版本
 
     bool f1 = _vlckit->initVLC();
+
+
     _vlckit->play(filename, (void*)ui->widget_2->winId());
     if(f1){
         qDebug() << "三个相关对象初始化成功" << endl;
     }else{
         qDebug() << "三个相关对象初始化失败" << endl;
     }
+#endif
+
+    QStringList filenames
+            = QFileDialog::getOpenFileNames(this,
+                                           "请选择对应视频文件",
+                                           "D:/AA-local_repository/media_sample/videos",
+                                           "视频文件(*.mp4);;"
+                                           "视频文件(*.avi);;");
+
+    //文件打开失败
+    if(filenames.isEmpty()){
+        return;
+    }
+
+    bool f1 = _vlckit->initVLC();
+    _vlckit->play(filenames,(void*)ui->widget_2->winId() );
 
     //Windows头文件中的定时器函数
     int nret = SetTimer(NULL, 1, 300, TimeProc);
