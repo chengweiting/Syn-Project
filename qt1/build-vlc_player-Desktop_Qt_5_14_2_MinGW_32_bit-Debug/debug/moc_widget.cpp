@@ -7,7 +7,7 @@
 *****************************************************************************/
 
 #include <memory>
-#include "../../vlc_player_v2/widget.h"
+#include "../../vlc_player_v3/widget.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)

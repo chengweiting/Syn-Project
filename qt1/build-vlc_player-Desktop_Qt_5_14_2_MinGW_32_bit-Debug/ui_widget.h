@@ -26,6 +26,7 @@ class Ui_Widget
 public:
     QVBoxLayout *verticalLayout;
     QWidget *widget_2;
+    QPushButton *pushButton;
     QSlider *_timeSlider;
     QWidget *widget;
     QHBoxLayout *horizontalLayout;
@@ -42,11 +43,14 @@ public:
     {
         if (Widget->objectName().isEmpty())
             Widget->setObjectName(QString::fromUtf8("Widget"));
-        Widget->resize(1104, 626);
+        Widget->resize(1310, 626);
         verticalLayout = new QVBoxLayout(Widget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         widget_2 = new QWidget(Widget);
         widget_2->setObjectName(QString::fromUtf8("widget_2"));
+        pushButton = new QPushButton(widget_2);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setGeometry(QRect(10, 10, 93, 28));
 
         verticalLayout->addWidget(widget_2);
 
@@ -113,9 +117,6 @@ public:
         _volumeSlider->setSizePolicy(sizePolicy2);
         _volumeSlider->setMinimumSize(QSize(200, 0));
         _volumeSlider->setMaximumSize(QSize(500, 22));
-        _volumeSlider->setMaximum(20);
-        _volumeSlider->setSingleStep(10);
-        _volumeSlider->setPageStep(10);
         _volumeSlider->setOrientation(Qt::Horizontal);
         _volumeSlider->setTickPosition(QSlider::NoTicks);
 
@@ -133,6 +134,7 @@ public:
     void retranslateUi(QWidget *Widget)
     {
         Widget->setWindowTitle(QCoreApplication::translate("Widget", "Widget", nullptr));
+        pushButton->setText(QCoreApplication::translate("Widget", "\350\217\234\345\215\225", nullptr));
         _labTime->setText(QCoreApplication::translate("Widget", "00:00:00 / 00:00:00 ", nullptr));
         btnopen->setText(QCoreApplication::translate("Widget", "\346\211\223\345\274\200\350\247\206\351\242\221", nullptr));
         btnplayer->setText(QCoreApplication::translate("Widget", "\346\222\255\346\224\276", nullptr));
